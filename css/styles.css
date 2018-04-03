@@ -17,7 +17,7 @@ p {
 }
 
 body {
-    background-color: #fdfdfd;
+    background-color: #f3f3f3;
     margin: 0;
     position: relative;
 }
@@ -194,6 +194,11 @@ main:after {
     width: 200px;
 }
 
+.filter-options select:focus {
+    box-shadow: 0 0 7px 2px #000;
+    border: 1px solid #000;
+}
+
 
 /* ====================== Restaurant Listing ====================== */
 
@@ -359,6 +364,20 @@ main:after {
     padding: 5px;
     border-top: 1px solid #fff;
     font-size: 1rem;
+}
+
+.skip-link {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    background: #fff;
+    padding: 10px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+    left: 10%;
 }
 
 .one-whole {

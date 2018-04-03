@@ -151,7 +151,7 @@ createRestaurantHTML = (restaurant) => {
             (min-width: 960px) 480px 33.33vw,
             640px`);
     image.src = imgUrl.replace(".jpg", "-large.jpg");
-    image.setAttribute("alt", restaurant.name + " - " + restaurant.cuisine_type)
+    image.setAttribute("alt", restaurant.name + " restaurant serving " + restaurant.cuisine_type)
     li.append(image);
 
     const name = document.createElement('h2');

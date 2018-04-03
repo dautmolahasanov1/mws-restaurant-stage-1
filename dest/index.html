@@ -18,12 +18,13 @@
     </header>
 
     <main id="maincontent">
+        <a href="#filter-options" class="skip-link">Skip to main content<a>
         <section id="map-container" aria-role="application" aria-hidden="true" tabIndex="-1">
             <div id="map" class="one-whole"></div>
         </section>
         <section>
             <div class="filter-options one-whole">
-                <h2>Filter Results</h2>
+                <h2 id="filter-options" tabindex="0">Filter Results</h2>
                 <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
                   <option value="all">All Neighborhoods</option>
                 </select>
@@ -42,16 +43,16 @@
 
     <footer id="footer">
         Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
-    </footer>
+        </footer>
 
-    <script>
-        // register a service worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register("/sw.js").then((registration) => {
-                console.log(registration);
-            })
-        };
-    </script>
+        <script>
+            // register a service worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register("/sw.js").then((registration) => {
+                    console.log(registration);
+                })
+            };
+        </script>
 </body>
 
 </html>

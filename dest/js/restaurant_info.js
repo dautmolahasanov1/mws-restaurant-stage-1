@@ -57,18 +57,22 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
     const image = document.getElementById('restaurant-img');
     const imgUrl = DBHelper.imageUrlForRestaurant(restaurant);
-    image.className = 'restaurant-img'
-    image.setAttribute("srcset", imgUrl.replace(".jpg", "-small.jpg 480w,") +
+    image.className = 'restaurant-img responsively-lazy';
+    image.setAttribute("data-srcset",
+        imgUrl.replace(".jpg", "-small.jpg 480w,") +
         imgUrl.replace(".jpg", "-medium.jpg 640w,") +
         imgUrl.replace(".jpg", "-large.jpg 2x")
     );
-    image.setAttribute("sizes", `(max-width: 480px) 480px, 100vw,
+    image.setAttribute("srcset", "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
+    image.setAttribute("sizes",
+        `(max-width: 480px) 480px, 100vw,
             (min-width: 481) 640px, 100vw,
             (min-width: 640px) 480px, 50vw, 
             (min-width: 960px) 480px 33.33vw,
-            640px`);
-    image.src = imgUrl.replace(".jpg", "-large.jpg");
-    image.setAttribute("alt", restaurant.name + " restaurant serving " + restaurant.cuisine_type);
+            640px`
+    );
+    image.src = imgUrl.replace(".jpg", "-small.jpg");
+    image.setAttribute("alt", restaurant.name + " " + restaurant.cuisine_type);
 
     const cuisine = document.getElementById('restaurant-cuisine');
     cuisine.innerHTML = restaurant.cuisine_type;
@@ -95,6 +99,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 
         const time = document.createElement('td');
         time.innerHTML = operatingHours[key].replace(",", "<br>");
+        time.classList.add('time');
         row.appendChild(time);
 
         hours.appendChild(row);

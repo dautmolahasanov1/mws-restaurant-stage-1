@@ -6,6 +6,8 @@ self.addEventListener('install', function(event) {
                 '/',
                 '/index.html',
                 '/css/styles.css',
+                '/css/small.css',
+                '/css/medium-up.css',
                 '/js/main.js',
                 '/js/restaurant_info.js',
                 '/js/dbhelper.js'

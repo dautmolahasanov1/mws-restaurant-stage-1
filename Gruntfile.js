@@ -7,7 +7,6 @@
 */
 
 module.exports = function(grunt) {
-
     grunt.initConfig({
         responsive_images: {
             dev: {
@@ -29,7 +28,7 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    src: ['*.{gif,jpg,png}'],
+                    src: ['*.{gif,jpg}'],
                     cwd: 'img/',
                     dest: 'dest/img/'
                 }]
@@ -79,6 +78,10 @@ module.exports = function(grunt) {
                     dest: 'dest/'
                 }, {
                     expand: true,
+                    src: 'manifest.json',
+                    dest: 'dest/'
+                }, {
+                    expand: true,
                     src: 'img/*',
                     dest: 'dest/'
                 }]
@@ -86,7 +89,7 @@ module.exports = function(grunt) {
         },
 
         serve: {
-            'path': 'Users/dautm/Desktop/Udacity/Restaurant%20app/mws-restaurant-stage-1/dest',
+            'path': 'Users/dautm/Desktop/Udacity/Restaurant%20app/mws-restaurant-stage-1/dest/index.html',
             options: {
                 port: 8888
             }

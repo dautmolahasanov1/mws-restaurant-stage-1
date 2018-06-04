@@ -18,6 +18,7 @@
     "grunt-serve": "^0.1.6"
   },
   "dependencies": {
-    "grunt-imagemagick": "^0.1.5"
+    "grunt-imagemagick": "^0.1.5",
+    "responsively-lazy": "^2.0.2"
   }
 }

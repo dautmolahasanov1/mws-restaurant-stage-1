@@ -40,27 +40,29 @@
             <ul id="restaurants-list" class="grid"></ul>
         </section>
     </main>
-
-    <button style="position: fixed; bottom: 2rem; right: 2rem" onclick="initMap()">Load Map</button>
-    <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
-    <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9E_UAsseT7avrjZEXhoCyn94Twi4kRag"></script>
-
-
     <footer id="footer">
         Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
     </footer>
+    <button style="position: fixed; bottom: 2rem; right: 2rem" onclick="initMap()">Load Map</button>
+
+    <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
+    <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9E_UAsseT7avrjZEXhoCyn94Twi4kRag&callback=initMap"></script>
 
     <script>
         // register a service worker
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register("/sw.js").then((registration) => {
-                console.log(registration);
-            })
-        };
-        console.log(navigator);
+            console.log("Will the service worker register?");
+            navigator.serviceWorker.register("/sw.js")
+                .then(function(reg) {
+                    console.log("Yes, registered.");
+                }).catch(function(err) {
+                    console.log("No, and here is why : ", err)
+                });
+        }
     </script>
-    <script async src="js/responsivelyLazy.min.js"></script>
+
+    <script async defer src="js/responsivelyLazy.min.js"></script>
 
 </body>
 

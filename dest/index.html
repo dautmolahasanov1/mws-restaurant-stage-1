@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsivelyLazy.css">
     <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 
     <meta name="theme-color" content="#3367D6">
     <meta name="viewport" content="width=device-width" content="initial-scale=1.0">
@@ -41,9 +41,10 @@
         </section>
     </main>
 
+    <button style="position: fixed; bottom: 2rem; right: 2rem" onclick="initMap()">Load Map</button>
     <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
     <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9E_UAsseT7avrjZEXhoCyn94Twi4kRag&libraries=places&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9E_UAsseT7avrjZEXhoCyn94Twi4kRag"></script>
 
 
     <footer id="footer">
@@ -57,6 +58,7 @@
                 console.log(registration);
             })
         };
+        console.log(navigator);
     </script>
     <script async src="js/responsivelyLazy.min.js"></script>
 

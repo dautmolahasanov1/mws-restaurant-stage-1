@@ -19,7 +19,6 @@ class DBHelper {
         fetch(DBHelper.DATABASE_URL)
             .then(response => response.json())
             .then(restaurants => {
-                console.log(restaurants)
                 callback(null, restaurants);
             }).catch((error) => { // Oops!. Got an error from server.
                 callback(error, null);

@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         /* Clear out the images directory if it exists */
         clean: {
             dev: {
-                src: ['dest/img/'],
+                src: ['dest/img/', 'dest/css/'],
             },
         },
 
@@ -47,20 +47,28 @@ module.exports = function(grunt) {
         mkdir: {
             dev: {
                 options: {
-                    create: ['dest/img/']
+                    create: ['dest/img/', 'dest/css/']
 
                 },
             },
         },
 
         /* Copy the "fixed" images that don't go through processing into the images/directory */
+
+        concat_css: {
+            options: {
+                // Task-specific options go here.
+            },
+            all: {
+                src: ['css/*.css'],
+                dest: 'dest/css/styles.css'
+            },
+        },
+
+
         copy: {
             dev: {
                 files: [{
-                    expand: true,
-                    src: 'css/*.css',
-                    dest: 'dest/'
-                }, {
                     expand: true,
                     src: 'data/*',
                     dest: 'dest/'
@@ -102,6 +110,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-serve');
-    grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'responsive_images']);
+    grunt.loadNpmTasks('grunt-concat-css');
+    grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'responsive_images', 'concat_css']);
 
 };

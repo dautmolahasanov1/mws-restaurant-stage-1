@@ -269,9 +269,11 @@ main:after {
     font-size: 11pt;
 }
 
-#restaurants-list li a {
+#restaurants-list li a,
+#load_map {
     background-color: #ab5d00;
-    border-bottom: 3px solid #eee;
+    border: none;
+    /*border-bottom: 3px solid #eee;*/
     color: #fff;
     display: inline-block;
     font-size: 10pt;

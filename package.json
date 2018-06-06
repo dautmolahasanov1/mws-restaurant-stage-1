@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "grunt-imagemagick": "^0.1.5",
+    "idb": "^2.1.2",
     "responsively-lazy": "^2.0.2"
   }
 }

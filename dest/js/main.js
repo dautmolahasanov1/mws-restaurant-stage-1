@@ -81,6 +81,7 @@ window.initMap = () => {
         scrollwheel: false
     });
     updateRestaurants();
+    document.getElementById('load_map').style = "display: none";
 }
 
 /**

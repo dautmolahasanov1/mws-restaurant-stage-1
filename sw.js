@@ -35,7 +35,7 @@ self.addEventListener('fetch', function(event) {
                     .objectStore('restaurants').getAll()
             }).then(function(allObjs) {
                 console.log(allObjs);
-                if (allObjs.length > 1) {
+                if (allObjs.length > 0) {
                     return new Response(JSON.stringify(allObjs), { "status": 200, "statusText": "MyCustomResponse!" });
                 } else {
                     fetch(event.request).then(function(internetResponse) {

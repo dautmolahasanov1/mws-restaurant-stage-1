@@ -351,7 +351,6 @@ self.addEventListener('fetch', function(event) {
                 return db.transaction('restaurants')
                     .objectStore('restaurants').getAll()
             }).then(function(allObjs) {
-                console.log(allObjs);
                 if (allObjs.length > 0) {
                     return new Response(JSON.stringify(allObjs), { "status": 200, "statusText": "MyCustomResponse!" });
                 } else {

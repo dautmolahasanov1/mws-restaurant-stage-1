@@ -65,6 +65,31 @@ module.exports = function(grunt) {
             },
         },
 
+        // "babel": {
+        //     options: {
+        //         sourceMap: true
+        //     },
+        //     dist: {
+        //         files: {
+        //             "dest/sw.js": "./sw.js"
+        //         }
+        //     }
+        // },
+
+        browserify: {
+            dev: {
+                // options: {
+                //     plugin: [
+                //         'idb', // register plugin by name
+                //         ['idb', { noServe: true }] // register plugin with name and options
+                //     ]
+                // },
+                files: {
+                    './dest/sw.js': './sw.js'
+                },
+
+            }
+        },
 
         copy: {
             dev: {
@@ -77,6 +102,10 @@ module.exports = function(grunt) {
                     src: 'js/*.js',
                     dest: 'dest/'
                 }, {
+                    //     expand: true,
+                    //     src: 'sw.js',
+                    //     dest: 'dest/'
+                    // }, {
                     expand: true,
                     src: '*.html',
                     dest: 'dest/'
@@ -109,8 +138,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-mkdir');
-    grunt.loadNpmTasks('grunt-serve');
     grunt.loadNpmTasks('grunt-concat-css');
-    grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'responsive_images', 'concat_css']);
+    grunt.loadNpmTasks('grunt-babel');
+    grunt.loadNpmTasks('grunt-browserify');
+    grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'browserify', 'responsive_images', 'concat_css']);
 
 };

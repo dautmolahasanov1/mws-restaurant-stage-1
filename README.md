@@ -12,7 +12,7 @@
 `npm install`  
 in the repo folder.  
 
-3. You will need ImageMagic to run this project. To use GraphicMagic locate this line of code   
+3. You will need [ImageMagic](https://www.imagemagick.org/script/download.php) to run this project. To use [GraphicsMagick](http://www.graphicsmagick.org/download.html) locate this line of code   
 `engine: 'im'`  
  in the **Gruntfile.js** and comment it out.
 

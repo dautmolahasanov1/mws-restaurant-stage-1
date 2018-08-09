@@ -8,12 +8,12 @@
 
 1. Clone this repo https://github.com/udacity/mws-restaurant-stage-3 and follow the **Readme** to set up the server.
 
-2. Clone this repo and run
-`npm install`
-in the repo folder.
+2. Clone this repo and run  
+`npm install`  
+in the repo folder.  
 
-3. You will need ImageMagic to run this project. To use GraphicMagic locate this line of code 
-`engine: 'im'`
+3. You will need ImageMagic to run this project. To use GraphicMagic locate this line of code   
+`engine: 'im'`  
  in the **Gruntfile.js** and comment it out.
 
 4. Run

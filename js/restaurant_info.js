@@ -52,6 +52,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     const name = document.getElementById('restaurant-name');
     name.innerHTML = restaurant.name;
 
+    const restaurantId = document.getElementById('restaurant_id');
+    restaurantId.value = restaurant.id;
+
     const address = document.getElementById('restaurant-address');
     address.innerHTML = restaurant.address;
 
@@ -110,6 +113,11 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  * Create all reviews HTML and add them to the webpage.
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
+
+    var revWait = fetch(`http://localhost:1337/reviews/?restaurant_id=${self.restaurant.id}`)
+        .then(response => response)
+        .then(review => review.json())
+
     const container = document.getElementById('reviews-container');
     const title = document.createElement('h3');
     title.className = 'review-title';
@@ -117,16 +125,23 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     container.appendChild(title);
 
     if (!reviews) {
+        
+    }
+    const ul = document.getElementById('reviews-list');
+    revWait.then(res => {
+        console.log(res) 
+        res.forEach(review => {
+            console.log(review)
+            ul.appendChild(createReviewHTML(review));
+            container.appendChild(ul);
+        });
+    }).catch( () => {
         const noReviews = document.createElement('p');
         noReviews.innerHTML = 'No reviews yet!';
         container.appendChild(noReviews);
         return;
-    }
-    const ul = document.getElementById('reviews-list');
-    reviews.forEach(review => {
-        ul.appendChild(createReviewHTML(review));
-    });
-    container.appendChild(ul);
+        })
+    
 }
 
 /**
@@ -156,7 +171,6 @@ createReviewHTML = (review) => {
 
     return li;
 }
-
 /**
  * Add restaurant name to the breadcrumb navigation menu
  */

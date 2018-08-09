@@ -60,7 +60,7 @@ self.addEventListener('fetch', function(event) {
                 }
             })
         )
-    } else {
+    } else if (event.method == "GET") {
         event.respondWith(caches.match(event.request)
             .then(function(localResponse) {
                 return localResponse || fetch(event.request).then(function(internetResponse) {

@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         responsive_images: {
             dev: {
                 options: {
-                    //engine: 'im',
+                    engine: 'im',
                     sizes: [{
                         name: 'small',
                         width: '480',
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                     expand: true,
                     src: ['*.{gif,jpg}'],
                     cwd: 'img/',
-                    dest: 'dest/img/'
+                    dest: 'dist/img/'
                 }]
             }
         },
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         /* Clear out the images directory if it exists */
         clean: {
             dev: {
-                src: ['dest/img/', 'dest/css/'],
+                src: ['dist/img/', 'dist/css/'],
             },
         },
 
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
         mkdir: {
             dev: {
                 options: {
-                    create: ['dest/img/', 'dest/css/']
+                    create: ['dist/img/', 'dist/css/']
 
                 },
             },
@@ -61,20 +61,21 @@ module.exports = function(grunt) {
             },
             all: {
                 src: ['css/*.css'],
-                dest: 'dest/css/styles.css'
+                dest: 'dist/css/styles.css'
             },
         },
 
-        // "babel": {
-        //     options: {
-        //         sourceMap: true
-        //     },
-        //     dist: {
-        //         files: {
-        //             "dest/sw.js": "./sw.js"
-        //         }
-        //     }
-        // },
+        babel: {
+            options: {
+                sourceMap: true
+            },
+            dist: {
+                files: {
+                    //"dist/sw.js": "./sw.js",
+                    "dist/js/app.js": "js/*.js"
+                }
+            }
+        },
 
         browserify: {
             dev: {
@@ -85,7 +86,7 @@ module.exports = function(grunt) {
                 //     ]
                 // },
                 files: {
-                    './dest/sw.js': './sw.js'
+                    './dist/sw.js': './sw.js'
                 },
 
             }
@@ -96,37 +97,48 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     src: 'data/*',
-                    dest: 'dest/'
+                    dest: 'dist/'
                 }, {
                     expand: true,
                     src: 'js/*.js',
-                    dest: 'dest/'
+                    dest: 'dist/'
                 }, {
                     //     expand: true,
                     //     src: 'sw.js',
-                    //     dest: 'dest/'
+                    //     dest: 'dist/'
                     // }, {
                     expand: true,
                     src: '*.html',
-                    dest: 'dest/'
+                    dest: 'dist/'
                 }, {
                     expand: true,
                     src: 'sw.js',
-                    dest: 'dest/'
+                    dest: 'dist/'
                 }, {
                     expand: true,
                     src: 'manifest.json',
-                    dest: 'dest/'
+                    dest: 'dist/'
                 }, {
                     expand: true,
                     src: 'img/*',
-                    dest: 'dest/'
+                    dest: 'dist/'
                 }]
             },
         },
 
+        watch: {
+            scripts: {
+                files: ['js/*.js', 'css/*.css' , './*.html' ],
+                tasks: [ 'copy', 'browserify', 'concat_css', 'babel'],
+                options: {
+                interrupt: true,
+                },
+            }
+        },
+          
+
         serve: {
-            'path': 'Users/dautm/Desktop/Udacity/Restaurant%20app/mws-restaurant-stage-1/dest/index.html',
+            'path': 'Users/dautm/Desktop/Udacity/Restaurant%20app/mws-restaurant-stage-1/dist/index.html',
             options: {
                 port: 8888
             }
@@ -141,6 +153,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-browserify');
-    grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'browserify', 'responsive_images', 'concat_css']);
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'browserify', 'responsive_images', 'concat_css', 'babel']);
 
 };

@@ -18,6 +18,8 @@
         "grunt-contrib-jshint": "~0.10.0",
         "grunt-contrib-nodeunit": "~0.4.1",
         "grunt-contrib-uglify": "~0.5.0",
+        "grunt-contrib-watch": "^1.1.0",
+        "grunt-file-watch": "^1.0.8",
         "grunt-mkdir": "~0.1.2",
         "grunt-prepend": "^0.1.2",
         "grunt-responsive-images": "^0.1.9",
@@ -25,7 +27,9 @@
         "load-grunt-tasks": "^4.0.0"
     },
     "dependencies": {
+        "gm": "^1.23.1",
         "grunt-babel": "^7.0.0",
+        "grunt-gm": "^0.4.3",
         "grunt-imagemagick": "^0.1.5",
         "idb": "^2.1.2",
         "responsively-lazy": "^2.0.2"

@@ -48,11 +48,52 @@
         <!-- end restaurant -->
         <!-- Beginning reviews -->
         <section id="reviews-container" class="small--one-whole medium--one-half large--two-thirds">
-            <ul id="reviews-list"></ul>
+            <div class="reviews">
+                <ul id="reviews-list"></ul>
+            </div>
+            
         </section>
+
+        <div id="review_form_wrapper" class="small--one-whole medium--one-half large--two-thirds">
+            <form action="" method="POST">
+                <h4>Submit a review</h4>
+                <input id="restaurant_id" type="text" class="hidden"/>
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="John Smith"/>
+                <label for="rating">Stars</label>
+                <input id="rating" type="number" min="1" max="5" placeholder="1 - 5"/>
+                <label for="comments">Review</label>
+                <textarea id="comments" type="textarea" placeholder="Great place to meet friends..."/></textarea>
+                
+                <button onclick="submitReview()">Submit</button>
+            </form>
+        </div>
         <!-- End reviews -->
     </main>
     <!-- End main -->
+
+    <script>
+    submitReview = (e) => {
+        var url = 'http://localhost:1337/reviews/';
+        var data = {
+                "restaurant_id": document.getElementById('restaurant_id').value,
+                "name": document.getElementById('name').innerText,
+                "rating": document.getElementById('rating').value,
+                "comments": document.getElementById('comments').innerText
+            };
+
+        fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers:{
+        'Content-Type': 'application/json'
+        }
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response));
+
+    }
+</script>
 
     <!-- Beginning footer -->
     <footer id="footer">
@@ -65,9 +106,9 @@
 
     <!-- Beginning scripts -->
     <!-- Database helpers -->
-    <script type="text/javascript" src="js/dbhelper.js"></script>
+    <script type="text/javascript" src="/js/dbhelper.js"></script>
     <!-- Main javascript file -->
-    <script type="text/javascript" src="js/restaurant_info.js"></script>
+    <script type="text/javascript" src="/js/restaurant_info.js"></script>
     <!-- Google Maps -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9E_UAsseT7avrjZEXhoCyn94Twi4kRag&libraries=places&callback=initMap"></script>
     <!-- End scripts -->

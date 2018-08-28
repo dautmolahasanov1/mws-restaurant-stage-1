@@ -52,6 +52,19 @@ img {
     display: block;
 }
 
+button {
+    background: #ab5d00;
+    color: #fff;
+    height: 30px;
+    margin: 20px 0;
+}
+
+#review_form_wrapper input,
+#review_form_wrapper textarea {
+    width: 100%;
+    max-width: 250px;
+}
+
 h1,
 h2,
 h3,
@@ -385,12 +398,11 @@ main:after {
 form input {
     display: block;
     clear: both;
-
 }
 
 form label {
     display: block;
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 textarea#comments {
@@ -401,7 +413,6 @@ textarea#comments {
     max-width: 100%;
     height: 150px;
 }
-
 
 .one-whole {
     width: 100%;

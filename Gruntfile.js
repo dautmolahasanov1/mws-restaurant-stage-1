@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         responsive_images: {
             dev: {
                 options: {
-                    engine: 'im',
+                    //engine: 'im',
                     sizes: [{
                         name: 'small',
                         width: '480',
@@ -128,14 +128,14 @@ module.exports = function(grunt) {
 
         watch: {
             scripts: {
-                files: ['js/*.js', 'css/*.css' , './*.html' ],
-                tasks: [ 'copy', 'browserify', 'concat_css', 'babel'],
+                files: ['js/*.js', 'css/*.css', './*.html'],
+                tasks: ['copy', 'browserify', 'concat_css', 'babel'],
                 options: {
-                interrupt: true,
+                    interrupt: true,
                 },
             }
         },
-          
+
 
         serve: {
             'path': 'Users/dautm/Desktop/Udacity/Restaurant%20app/mws-restaurant-stage-1/dist/index.html',
